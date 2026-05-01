@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Wedding Invitation | Tejaswini & Shashidhar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Updock&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --traditional-maroon: #660000; 
+            --gold-accent: #996e00; 
+            --cream-bg: #fffdf5;
+            --live-red: #ff0000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f1ea;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .photo-section {
+            width: 100%;
+            height: 40vh;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            z-index: 2;
+        }
+
+        .slide-group {
+            position: absolute;
+            width: 100%; height: 100%;
+            opacity: 0;
+            animation: fadeGroup 16s infinite;
+        }
+
+        .slide-group img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes fadeGroup {
+            0%, 100% { opacity: 0; }
+            5%, 25% { opacity: 1; }
+            30% { opacity: 0; }
+        }
+
+        .slide-group:nth-child(1) { animation-delay: 0s; }
+        .slide-group:nth-child(2) { animation-delay: 4s; }
+        .slide-group:nth-child(3) { animation-delay: 8s; }
+        .slide-group:nth-child(4) { animation-delay: 12s; }
+
+        .invitation-section {
+            width: 100%;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-top: -30px; 
+            border-radius: 30px 30px 0 0;
+            /* Watermark Photo as Background */
+            background-image: url('D:/photos/066A0820.JPG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        /* Darker Cream Overlay spanning top to bottom */
+        .invitation-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Increased darkness/opacity of the cream fill for better readability */
+            background: rgba(255, 253, 245, 0.75); 
+            z-index: -1;
+        }
+
+        .header-blessings { font-size: 0.75rem; color: var(--traditional-maroon); letter-spacing: 1px; margin-bottom: 15px; font-weight: 600; }
+        h2 { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--traditional-maroon); margin-bottom: 10px;}
+        
+        .name-title { font-family: 'Updock', cursive; font-size: 2.2rem; color: var(--traditional-maroon); line-height: 1.1; margin: 5px 0; }
+        .parent-info { font-size: 0.8rem; color: #555; margin-bottom: 5px; }
+        .weds { font-family: 'Great Vibes', cursive; font-size: 1.4rem; color: var(--gold-accent); margin: 5px 0; }
+
+        .event-box {
+            width: 100%;
+            border-top: 1px solid var(--gold-accent);
+            border-bottom: 1px solid var(--gold-accent);
+            padding: 15px 0;
+            margin: 20px 0;
+            background: rgba(255, 253, 245, 0.6);
+        }
+
+        #countdown { display: flex; gap: 8px; margin-top: 10px; justify-content: center; }
+        .time-box { display: flex; flex-direction: column; align-items: center; min-width: 45px; background: rgba(128,0,0,0.1); padding: 6px; border-radius: 8px; }
+        .time-val { font-weight: 600; font-size: 0.95rem; color: var(--traditional-maroon); }
+        .time-label { font-size: 0.5rem; text-transform: uppercase; color: var(--gold-accent); }
+
+        .section-label { font-size: 0.7rem; letter-spacing: 1.5px; color: var(--gold-accent); margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
+
+        .host-photo {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px; 
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .host-names { font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: var(--traditional-maroon); }
+
+        .venue-details { margin: 25px 0; line-height: 1.4; width: 100%; }
+        .venue-name { color: var(--traditional-maroon); font-weight: 600; font-size: 1rem; letter-spacing: 1px; }
+        .venue-addr { font-size: 0.85rem; color: #333; margin-bottom: 15px; }
+
+        .map-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 10px;
+        }
+
+        .live-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: white; color: var(--live-red); border: 1.5px solid var(--live-red);
+            padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.8rem; margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(255,0,0,0.1);
+        }
+        .live-dot { width: 8px; height: 8px; background: var(--live-red); border-radius: 50%; margin-right: 8px; animation: blink 1s infinite; }
+
+        .contacts { width: 100%; padding: 20px 0; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+        
+        .contact-note { 
+            font-size: 0.78rem; 
+            color: var(--traditional-maroon); 
+            font-weight: 600; 
+            letter-spacing: 0.2px;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .contact-card {
+            background: white; border: 1px solid #eee; padding: 10px 15px; border-radius: 10px;
+            display: flex; justify-content: space-between; width: 100%; max-width: 320px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .contact-card span { font-size: 0.8rem; font-weight: 600; color: #444; }
+        .contact-card a { color: var(--traditional-maroon); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+        .music-control {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--traditional-maroon); color: white; border: none;
+            border-radius: 50%; width: 50px; height: 50px; z-index: 999; font-size: 1.2rem; cursor: pointer;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        @media (min-width: 851px) {
+            .main-container { flex-direction: row; max-width: 900px; height: 85vh; }
+            .photo-section { width: 50%; height: 100%; }
+            .invitation-section { width: 50%; margin-top: 0; border-radius: 0; height: 100%; overflow-y: auto; }
+        }
+    </style>
+</head>
+<body onmouseover="autoPlayAudio()" onclick="autoPlayAudio()" ontouchstart="autoPlayAudio()">
+
+    <audio id="weddingSong" loop preload="auto">
+        <source src="https://mp3tourl.com/audio/1777597489328-9b5b3cc9-03fc-4bdf-a4c6-07fe7f1c593e.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
+
+    <div class="main-container">
+        <div class="photo-section">
+            <div class="slide-group"><img src="D:\photos\3J9A2585.JPG" alt="Couple 1"></div>
+            <div class="slide-group"><img src="D:\photos\066A0155.JPG" alt="Couple 2"></div>
+            <div class="slide-group"><img src="D:\photos\3J9A2592.JPG" alt="Couple 3"></div>
+            <div class="slide-group"><img src="D:\photos\066A0842.JPG" alt="Couple 4"></div>
+        </div>
+
+        <div class="invitation-section">
+            <div class="header-blessings">Sri Rasthu! | Shubhamasthu!! | Avignamasthu!!!</div>
+            
+            <h2>Wedding Invitation</h2>
+            
+            <div class="names-container">
+                <div class="name-title">Chi. Sow. Tejaswini</div>
+                <div class="weds">Weds</div>
+                <div class="name-title">Chi. Shashidhar Reddy</div>
+                <p class="parent-info">(Elder S/o Smt & Sri Lachagari Rani-Krishna Reddy)</p>
+            </div>
+
+            <div class="event-box">
+                <p style="font-family: 'Great Vibes'; font-size: 1.6rem; color: var(--traditional-maroon);">Sumuhurtham</p>
+                <p style="font-weight:600; font-size: 0.9rem;">Friday, 8th May 2026 | 10:35 AM</p>
+                
+                <div id="countdown">
+                    <div class="time-box"><span class="time-val" id="days">00</span><span class="time-label">Days</span></div>
+                    <div class="time-box"><span class="time-val" id="hours">00</span><span class="time-label">Hrs</span></div>
+                    <div class="time-box"><span class="time-val" id="mins">00</span><span class="time-label">Mins</span></div>
+                    <div class="time-box"><span class="time-val" id="secs">00</span><span class="time-label">Secs</span></div>
+                </div>
+            </div>
+
+            <div class="hosts-wrapper">
+                <p class="section-label">Invited By:</p>
+                <img src="D:\photos\3J9A1528.JPG" alt="Host Photo" class="host-photo">
+                <div class="host-names">Smt. Yeruva Suguna</div>
+                <div class="host-names">& Sri Yeruva Seshi Reddy</div>
+                <p style="font-size: 0.75rem; margin-top: 8px; color: #666;">Plate No. 39, Sri Sai Nagar Colony, Turkayamjal.</p>
+            </div>
+
+            <div class="venue-details">
+                <p class="section-label">Venue:</p>
+                <p class="venue-name">A.C.R CONVENTION HALL</p>
+                <p class="venue-addr">Uppariguda "X" Road, Ibrahimpatnam Mdl,<br>R.R. Dist, Telangana</p>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3810.590136279161!2d78.61407341077759!3d17.199274383554475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcba70074608cc1%3A0x9780684c64b0e1ba!2sACR%20Convention%20(A%2FC)!5e0!3m2!1sen!2sin!4v1714500000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <a href="https://nvtl.in/ShashidharReddyWedsTejaswini" target="_blank" class="live-btn">
+                <span class="live-dot"></span> WATCH LIVE WEDDING
+            </a>
+
+            <div class="contacts">
+                <p class="contact-note">Please reach out to our family for any queries:</p>
+                <div class="contact-card"><span>Yeruva Maheer Reddy</span><a href="tel:7794040243">7794040243</a></div>
+                <div class="contact-card"><span>B Sudharshan Reddy</span><a href="tel:7569217430">7569217430</a></div>
+                <div class="contact-card"><span>B Sreedhar Reddy</span><a href="tel:9182790463">9182790463</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var song = document.getElementById("weddingSong");
+        var hasPlayed = false;
+
+        function autoPlayAudio() {
+            if (!hasPlayed) {
+                hasPlayed = true;
+                song.currentTime = 5;
+                song.play().catch(e => console.log("Music blocked"));
+            }
+        }
+
+        function toggleMusic() {
+            song.paused ? song.play() : song.pause();
+        }
+
+        const weddingDate = new Date("May 8, 2026 10:35:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            document.getElementById("days").innerHTML = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24))).toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).toString().padStart(2, '0');
+            document.getElementById("mins").innerHTML = Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).toString().padStart(2, '0');
+            document.getElementById("secs").innerHTML = Math.max(0, Math.floor((distance % (1000 * 60)) / 1000)).toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>
